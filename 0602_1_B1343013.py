@@ -1,0 +1,51 @@
+# 基本題：飲料店會員點數管理
+print("=== 基本題：飲料店會員點數管理 ===")
+
+member = {
+    "Amy": 120,
+    "Bob": 85,
+    "Cindy": 200
+}
+
+# 新增會員 David，初始點數為 50 點
+member["David"] = 50
+print("已新增會員 David，初始點數 50 點")
+
+# Amy 本次消費獲得 30 點，更新其點數
+member["Amy"] = member["Amy"] + 30
+print(f"Amy 消費獲得 30 點，目前點數 {member['Amy']} 點")
+
+# Bob 兌換商品，扣除 40 點
+member["Bob"] = member["Bob"] - 40
+print(f"Bob 兌換商品扣除 40 點，目前點數 {member['Bob']} 點")
+
+# 使用 get() 查詢 Eric 的點數，若查無此人則顯示「查無會員資料」
+eric_point = member.get("Eric", "查無會員資料")
+print(f"查詢 Eric 的點數：{eric_point}")
+
+# 列印所有會員名稱與目前點數
+print("\n目前所有會員點數：")
+for name in member:
+    print(f"{name}：{member[name]} 點")
+
+# 進階題：飲料店會員點數管理
+print("\n=== 進階題：飲料店會員點數管理 ===")
+
+# 使用 setdefault() 新增會員 Eric，若尚未有點數資料，預設給予 100 點
+member.setdefault("Eric", 100)
+print(f"使用 setdefault() 新增 Eric，目前點數 {member['Eric']} 點")
+
+# 使用 update() 一次加入以下會員
+member.update({"Frank": 80, "Grace": 150})
+print("使用 update() 加入 Frank、Grace")
+
+# 將點數低於 50 點的會員刪除
+for name in list(member.keys()):
+    if member[name] < 50:
+        del member[name]
+        print(f"{name} 點數低於 50 點，已刪除")
+
+# 印出目前所有會員資料
+print("\n目前所有會員資料：")
+for name in member:
+    print(f"{name}：{member[name]} 點")
